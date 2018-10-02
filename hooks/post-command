@@ -1,0 +1,17 @@
+#!/bin/bash
+set -euo pipefail
+
+echo "Uploading to AWS S3"
+
+source_path=${BUILDKITE_PLUGIN_AWS_UPLOAD_PLUGIN_SOURCE_PATH?}
+destination_path=${BUILDKITE_PLUGIN_AWS_UPLOAD_PLUGIN_DESTINATION_PATH?}
+profile_name=${BUILDKITE_PLUGIN_AWS_UPLOAD_PLUGIN_PROFILE_NAME?}
+
+aws --profile "${profile_name}" s3 cp "${source_path}" "${destination_path}" --acl public-read
+
+if [[ "$?" -ne 0 ]]; then
+    echo '[!] AWS upload failed'
+    exit 1
+fi
+
+exit 0

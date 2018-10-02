@@ -1,0 +1,18 @@
+name: AWS Upload
+description: Upload to AWS S3
+author: "@giem"
+requirements:
+  - bash
+  - aws
+configuration:
+  properties:
+    source-path:
+      type: string
+    destination-path:
+      type: string
+    profile-name:
+      type: string
+  required:
+    - source-path
+    - destination-path
+    - profile-name
