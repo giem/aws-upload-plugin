@@ -9,10 +9,10 @@ steps:
   - name: ":package:"
     command: .ci-scripts/build-and-archive.sh
     plugins:
-      aws-upload:
-        source-path: ".artifacts/ABC.zip"
-        destination-path: "s3:/abc/def/ghi/"
-        profile-name: "profile_abc"
+      - aws-upload:
+          source-path: ".artifacts/ABC.zip"
+          destination-path: "s3:/abc/def/ghi/"
+          profile-name: "profile_abc"
 ```
 
 ## Options
